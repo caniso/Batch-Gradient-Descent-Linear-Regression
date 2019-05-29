@@ -2,23 +2,15 @@ clc;
 clearvars;
 close all;
 
-
 %% 
-% Author : ›smail Can B¸y¸ktepe
+% Author : √ùsmail Can B√ºy√ºktepe
 % Date: 02.02.2019
 % Institute : Gebze Technical University
 % E-mail: ismailcanbuyuktepe@gmail.com
-%
-%
-%
-%
-%
-%
-
 
 folderName = '..\handlers';                             % Don't change
 folderNameOfFunctions = '..\handlers\functions';        % Don't change
-folderNameOfDataSets = '..\handlers\dataset';          % Don't change
+folderNameOfDataSets = '..\handlers\dataset';           % Don't change
 
 
 addpath(folderName, folderNameOfFunctions, folderNameOfDataSets);
@@ -42,9 +34,7 @@ title('Overview of distribution class2');
 xlabel('x');
 ylabel('y');
 
-
 %% all data is separated as training and test
-
 trainingData = [class1(:,1:1800), class2(:,1:1800); ones(1,3600)];
 testData = [class1(:,1801:2000), class2(:,1801:2000); ones(1,400)];
 
@@ -62,9 +52,7 @@ for i=1:50
     [tempClass1, tempClass2 , temp1Size, temp2Size]= classify(w, trainingData, numberOfSampleTrain);
     [wrongClassifyDataMatrix] = detectIncorrectClassifiedData(class1, class2, tempClass1, tempClass2, ...
                                          temp1Size, temp2Size, numberOfSampleTrain);
-    
-    [w] = calcNewDecisionLine(wrongClassifyDataMatrix, w, learningRate);
-    
+    [w] = calcNewDecisionLine(wrongClassifyDataMatrix, w, learningRate);    
 end
 
 %% Successof this algorithm is calculated on the test datas.
@@ -73,6 +61,3 @@ end
     
    [numbofAccurClassifiedData, accuracy] = successCalculation(testData, numberOfSampleTest, ...
                                                testTmpClass1,testTmpClass2, testTmp1Size, testTmp2Size);
-                                                                    
-    
-        
